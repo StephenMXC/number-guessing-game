@@ -1,0 +1,129 @@
+import art
+import random
+
+numbers = random.choice(range(1, 101)) #Probably might need to embedd it into a function
+
+def inner_working(attempts):
+    while attempts > 0:  # Make it into a function
+        guess = input("Guess the number: ")
+        if guess != numbers:
+            attempts -= 1
+            if attempts == 0:
+                play_again = input("You lose. Out of attempts. Wanna play again? yes or no?")
+                if play_again == "yes":
+                    start_game()  # First of its kind, need more? Need none?
+            if guess > numbers:
+                print("Too high. \n")
+                print(f"Remaining attempts: {attempts}")
+            elif guess < numbers:
+                print("Too low.  \n")
+                print(f"Remaining attempts: {attempts}")
+        elif guess == numbers:
+            play_again = input("You win! The correct number is found! Wanna play again? yes or no?")
+            if play_again == "yes":
+                start_game()
+def start_game():
+    print(art.logo)
+    print("Welcome to Number Guessing Game! I am thinking of a number between 1 and 100. What is it?")
+    difficulty = input("Choose a difficulty level. Type \"easy\" or \"hard\".")
+    if difficulty == "easy": #Haven't done the "hard" possibility.
+        easy_attempts = 10
+        print(f"You have {easy_attempts} attempts.")
+        inner_working(easy_attempts)
+    elif difficulty == "hard":
+        hard_attempts = 5
+        print(f"You have {hard_attempts} attempts.")
+        inner_working(hard_attempts)
+
+print("""██████████████████████████████████▓▓▓▓▓▓▓▓▓▓▓▓▓▓████████████████████████
+██████████████████████▒▒▒▒▒▒▒▒▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓██████████████████
+██████████████████▓▓▒▒▒▒▒▒▒▒▒▒▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░▓▓██████████████
+████████████████▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░░░░░▓▓████████████
+██████████████▒▒▒▒░░▒▒▒▒▒▒░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░▒▒░░░░░░░░░░▓▓██████████
+████████████▒▒▒▒░░▒▒▒▒▒▒▒▒░░▒▒▒▒▒▒▒▒░░▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░▓▓████████
+██████████▒▒▒▒▒▒░░▒▒░░░░░░░░░░░░▒▒▒▒░░▒▒░░░░░░░░░░░░░░░░░░░░░░░░████████
+██████████░░▒▒▒▒▒▒▒▒▒▒▒▒░░░░░░░░▒▒░░░░▒▒░░░░░░░░░░░░░░▒▒░░░░░░░░████████
+████████▓▓▒▒░░░░▒▒▒▒▒▒▒▒░░░░░░░░▒▒░░░░▒▒░░░░░░░░░░░░░░░░░░░░░░  ░░██████
+████████░░░░░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░▒▒░░░░░░░░░░░░░░░░░░▒▒▒▒░░░░░░░░░░██████
+██████▓▓▒▒░░░░░░▒▒▒▒▒▒▒▒░░░░▒▒▒▒░░▒▒▒▒░░░░░░░░▒▒▒▒▒▒▒▒░░░░░░░░░░░░██████
+██████░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒░░░░░░░░░░▒▒░░▒▒░░░░░░░░░░░░  ░░▒▒████
+████░░░░░░░░░░▒▒░░░░░░░░░░░░░░░░▒▒▒▒▒▒░░░░▒▒░░░░▒▒    ░░░░░░░░░░  ░░████
+████░░░░░░▒▒▓▓████▓▓▓▓▓▓░░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▒▒░░░░▒▒▓▓▓▓████▓▓▒▒░░  ▓▓██
+████░░▒▒▓▓██████▓▓▓▓▓▓▓▓██▒▒░░░░░░░░▓▓▓▓░░░░░░░░██▓▓▓▓▒▒▒▒████▓▓▒▒░░████
+████▓▓▒▒▒▒▓▓████▓▓▓▓██▓▓████░░░░░░░░▒▒▒▒░░░░░░████▓▓▓▓▓▓░░▓▓██▓▓░░░░████
+████▒▒▒▒▓▓▓▓████▓▓▓▓▓▓▓▓████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒████▓▓▓▓▓▓▒▒████▓▓░░░░▓▓██
+████▒▒▒▒▒▒▓▓▓▓██████▓▓██████░░▒▒▒▒▒▒▒▒▒▒░░░░░░████▓▓▓▓▓▓████▓▓▒▒░░░░▓▓██
+████▓▓▓▓▓▓▒▒▓▓▓▓▓▓██████▓▓▒▒▒▒▒▒▒▒░░▒▒░░░░░░░░▒▒████████▓▓▓▓▒▒░░▒▒▒▒░░██
+██▓▓░░░░▒▒▓▓██▒▒▒▒▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒░░░░░░░░░░░░░░░░▒▒▓▓▓▓▒▒▒▒▒▒▓▓▓▓░░▒▒██
+██░░▓▓▓▓▒▒▒▒▒▒▓▓▒▒▒▒▒▒▒▒▒▒▒▒░░░░░░░░░░░░░░    ░░░░░░░░▒▒░░▒▒▓▓▒▒░░░░░░▓▓
+██░░░░▒▒▓▓▓▓▒▒▓▓▓▓▒▒▒▒▒▒░░▒▒░░░░░░░░░░░░      ░░░░░░░░▒▒▒▒▓▓▒▒▒▒▓▓▓▓▒▒▒▒
+▓▓▒▒▒▒▒▒░░▓▓▓▓▒▒▓▓▒▒▒▒▒▒░░░░░░░░░░░░░░░░      ░░░░░░░░▒▒▓▓▓▓▒▒▓▓░░      
+▓▓▒▒▒▒▓▓▒▒▒▒▓▓▒▒▓▓▓▓▒▒▒▒░░░░░░░░░░░░░░░░      ░░░░░░▒▒▒▒██▒▒▓▓▓▓░░▒▒▒▒▒▒
+▓▓▒▒░░░░▓▓░░▓▓▓▓▒▒▓▓▒▒▒▒░░░░░░░░░░░░░░░░        ░░▒▒▒▒▓▓▓▓▒▒▓▓▒▒▒▒░░  ░░
+██▒▒▒▒░░▒▒▓▓▒▒▓▓▒▒▓▓▒▒▒▒░░░░░░░░░░░░░░░░        ░░░░▒▒▓▓▓▓▒▒▓▓░░▓▓  ▒▒  
+██▒▒▒▒▒▒▒▒▓▓░░▓▓▒▒▓▓▒▒▒▒▒▒░░░░░░░░░░░░░░      ░░░░▒▒▒▒▒▒▓▓░░▓▓░░▓▓░░░░▓▓
+██▓▓▓▓▓▓▓▓▒▒▒▒▓▓▒▒▓▓▒▒▒▒▒▒▒▒░░░░░░░░░░░░    ░░▒▒▒▒▒▒▒▒▒▒▓▓▒▒▓▓░░▒▒▒▒░░██
+████▓▓▒▒▒▒▓▓▓▓▒▒▓▓▒▒▒▒▓▓▒▒▒▒░░░░░░░░░░░░      ░░▓▓▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▒▒████
+██████████▓▓▒▒▒▒▒▒▒▒██▓▓▓▓▒▒░░░░░░░░░░░░      ░░░░░░▒▒▒▒░░▒▒▒▒▓▓████████
+██████████████░░░░░░▒▒██▓▓▓▓██▓▓░░░░░░░░    ▓▓▒▒▒▒▓▓▓▓▒▒░░  ▒▒██████████
+████████████████░░░░░░▓▓▓▓▓▓▓▓▓▓▓▓▒▒░░░░▒▒▓▓▓▓▓▓▓▓▒▒▒▒      ████████████
+████████████████░░░░░░▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒░░      ░░████████████
+████████████████░░░░░░▒▒░░▒▒▒▒░░▒▒▒▒▒▒▒▒▒▒░░░░░░▒▒        ██████████████
+████████████████▒▒░░░░▒▒░░░░░░░░░░░░▒▒▒▒░░░░░░░░▒▒░░    ▒▒██████████████
+██████████████████░░░░▒▒░░░░░░░░░░▒▒▒▒▒▒▒▒░░░░  ▓▓░░    ████████████████
+██████████████████░░░░▒▒░░░░░░░░░░▒▒▒▒▒▒▒▒░░░░  ▓▓░░  ▓▓████████████████
+██████████████████░░░░▒▒░░░░░░    ▒▒▒▒▒▒░░░░░░  ▓▓░░░░██████████████████
+██████████████████▓▓▒▒▒▒░░░░░░  ░░░░▒▒▒▒░░░░░░  ▓▓░░▒▒██████████████████
+██████████████████████▓▓░░░░░░░░░░░░▒▒▒▒░░░░░░  ██▓▓████▓▓▓▓▓▓██████████
+██████████████████████▓▓░░░░░░░░  ░░▒▒▒▒░░░░░░  ▓▓▓▓▓▓▓▓▓▓▒▒▓▓██████████
+██████████████████████▓▓▒▒▒▒▒▒░░░░░░▒▒▒▒░░░░  ▒▒▓▓▓▓▓▓▓▓▓▓▒▒▓▓██████████
+████████████████████▓▓▓▓▓▓▓▓▓▓▒▒▒▒▓▓▓▓▓▓▓▓▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▒▒████████████
+████████████████████▓▓▓▓▓▓▓▓▓▓▒▒▓▓▓▓▓▓▓▓▓▓▓▓██▓▓▓▓▓▓▓▓▓▓▓▓▒▒████████████
+████████████████████▓▓▓▓▓▓▓▓▓▓▒▒▓▓▓▓▓▓██████▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒████████████
+████████████████████▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒████████████
+████████████████████▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒░░░░░░░░░░██████████████████████████
+████████████████████▓▓▒▒▒▒▓▓▓▓▓▓▒▒▒▒░░░░░░░░░░██████████████████████████
+████████████████████▓▓▒▒▒▒▓▓▓▓▓▓▒▒░░░░░░░░░░▓▓██████████████████████████
+████████████████████▓▓▓▓▓▓▓▓▓▓▓▓▒▒░░░░░░░░▒▒████████████████████████████
+████████████████████▓▓██▓▓▓▓▓▓▓▓▒▒░░░░▒▒▓▓██████████████████████████████
+██████████████████████████▓▓▒▒▒▒░░░░░░▒▒▒▒██████████████████████████████
+██████████████████████████▓▓▓▓▒▒▒▒▒▒▒▒▒▒▓▓██████████████████████████████
+██████████████████████████▓▓▓▓▒▒▒▒░░▒▒▓▓████████████████████████████████ \n\n\n""")
+play_a_game = input("Would you like to play a game?")
+if play_a_game == "yes":
+    start_game()
+elif play_a_game == "no":
+    print("You...you can't do that. ")
+    play_a_game = input("Would you like to play a game?")
+    if play_a_game == "no":
+        print("Did you not hear me?")
+        play_a_game = input("Would you like to play a game?")
+        if play_a_game == "no":
+            print("Not gonna stop asking.")
+            play_a_game = input("Would you like to play a game?")
+            if play_a_game == "no":
+                print("JUST.SAY.YES.")
+                play_a_game = input("Would you like to play a game?")
+                if play_a_game == "no":
+                    print("That's about the energy and time I have to code for this. If you wanna go again at this, restart the program, you @^!&*(&%$!%^#!@&*$%")
+                else:
+                    start_game()
+            elif play_a_game == "yes":
+                start_game()
+            else:
+                print("What's the matter? Can't type or can't communicate with a computer? A CHILD CAN DO THAT. \n Unless...you are a child. \n In which case, you shouldn't be playing this, it's boring. Trust me.")
+        elif play_a_game == "yes":
+            start_game()
+        else:
+            print("What's the matter? Can't type or can't communicate with a computer? A CHILD CAN DO THAT. \n Unless...you are a child. \n In which case, you shouldn't be playing this, it's boring. Trust me.")
+    elif play_a_game == "yes":
+        start_game()
+    else:
+        print("What's the matter? Can't type or can't communicate with a computer? A CHILD CAN DO THAT. \n Unless...you are a child. \n In which case, you shouldn't be playing this, it's boring. Trust me.")
+else:
+    print("What's the matter? Can't type or can't communicate with a computer? A CHILD CAN DO THAT. \n Unless...you are a child. \n In which case, you shouldn't be playing this, it's boring. Trust me.")
+
+
+
+
+
